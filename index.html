@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./styles/styles.css">
+
+    <title>Astros</title>
+</head>
+<body>
+
+    <section>
+        <h1 class="titulo">astros</h1>
+        <p class="descripcion" id="descripcion">Haga click sobre una tarjeta para ver el astro</p>
+    </section>
+
+    <model-viewer 
+    id="astros" 
+    class="planetas" 
+    src=""
+    auto-rotate
+    camera-controls
+    environment-image="./images/fondo.jpeg"
+    exposure="6"
+    >
+    </model-viewer>
+
+    <section class="tarjetas">
+
+        <article class="tarjeta">
+            <img src="./images/tierra.png" class="tarjeta__image" alt="Icono de la tierra">
+            <div class="tarjeta__info">
+                <h2 class="tarjeta__nombre">Tierra</h2>
+                <p class="tarjeta__texto">Es el más denso y el quinto mayor de los ocho planetas del sistema solar.</p>
+                <button class="tarjeta__boton" type="button" onclick="seleccionarAstro('tierra')">Mostrar</button>
+            </div>
+        </article>
+
+        <article class="tarjeta">
+            <img src="./images/luna.png" class="tarjeta__image" alt="Icono de la luna">
+            <div class="tarjeta__info">
+                <h2 class="tarjeta__nombre">Luna</h2>
+                <p class="tarjeta__texto">Es el quinto satélite más grande del sistema solar.</p>
+                <button class="tarjeta__boton" type="button" onclick="seleccionarAstro('luna')">Mostrar</button>
+            </div>
+        </article>
+
+        <article class="tarjeta">
+            <img src="./images/saturno.png" class="tarjeta__image" alt="Icono de saturno">
+            <div class="tarjeta__info">
+                <h2 class="tarjeta__nombre">Saturno</h2>
+                <p class="tarjeta__texto">Es el sexto planeta del sistema solar contando desde el Sol.</p>
+                <button class="tarjeta__boton" type="button" onclick="seleccionarAstro('saturno')">Mostrar</button>
+            </div>
+        </article>
+    
+    </section>
+
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+
+    <script>
+        const planetas = {
+            tierra: "./planetas/tierra.glb",
+            luna: "./planetas/luna.glb",
+            saturno: "./planetas/saturno.glb"
+        }
+        const textos = {
+            tierra : "Nuestro planeta tiene un radio de  6,371km",
+            luna : "Nuestro satelite natural tiene un radio de 1,737km",
+            saturno : "El planeta Saturno tiene un radio de 58,232km"
+        }
+        function seleccionarAstro(planeta) {
+            astros.src = planetas[planeta]
+            descripcion.textContent = textos[planeta]
+        }
+    </script>
+    
+</body>
+</html>
